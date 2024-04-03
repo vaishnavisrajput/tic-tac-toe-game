@@ -1,5 +1,8 @@
 const box = document.querySelectorAll(".box")
 const resetBtn = document.querySelector(".reset-button")
+const winnerDiv = document.querySelector(".winnerDiv")
+const msg = document.querySelector("p");
+
 let turn0 = true;
 box.forEach((element) => {
     element.addEventListener("click", () =>{
@@ -12,6 +15,7 @@ box.forEach((element) => {
             turn0 =true;
         }
         element.disabled = true;
+        checkWinner();
     })
 })
 const winningPattern = [
@@ -25,12 +29,28 @@ const winningPattern = [
     [2, 4, 6],
 
 ];
-const checkWinner = ()=> {
-    winningPattern.forEach((winner) => {
-        if(winner[0] === winner[1] && winner[1] === winner[2]){
-            console.log("winner")
-        }
-    })
+const showWinner = (winner) =>{
+    msg.innerText = `Yayyy! Winner is ${winner}`
+    winnerDiv.classList.remove("hide")
 }
-checkWinner();
 
+
+
+    const checkWinner = ()=> {
+    for (let pattern of winningPattern){
+        let val1 = box[pattern[0]].innerHTML;
+        let val2 = box[pattern[1]].innerHTML;
+        let val3 = box[pattern[2]].innerHTML;
+
+        if(val1 != "" && val2 != "" && val3 != ""){
+            if(val1 === val2 && val2 === val3){
+                //console.log("winner", val1);
+                showWinner(val1);
+            }
+        }
+    }
+}
+
+resetBtn.addEventListener("click", () => {
+    window.location.reload();
+})

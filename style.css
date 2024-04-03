@@ -19,7 +19,7 @@
     column-gap: 25px;
     row-gap: 15px;
     justify-content: center;
-    margin-top: 80px;
+    margin-top: 60px;
 }
 .box{
     height: 100px;
@@ -39,4 +39,14 @@
     border-radius: 5px;
     border: none;
     color: white;
+}
+.winnerDiv{
+    text-align: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 40px;
+    font-weight: 700;
+}
+.hide {
+    display: none;
 }
